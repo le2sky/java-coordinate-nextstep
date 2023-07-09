@@ -2,6 +2,7 @@ package coordinate.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.offset;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -47,5 +48,16 @@ class CoordinateTest {
 
         assertThat(coordinate).isNotNull();
         assertThat(coordinate).isEqualTo(Coordinate.of(0, 0));
+    }
+
+    @DisplayName("직선 길이를 계산한다.")
+    @Test
+    void calculateDistance() {
+        Coordinate coordinate = Coordinate.of(10, 10);
+        Coordinate other = Coordinate.of(14, 15);
+
+        double result = coordinate.calculateDistance(other);
+
+        assertThat(result).isEqualTo(6.403124, offset(0.00000099));
     }
 }

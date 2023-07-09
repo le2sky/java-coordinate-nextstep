@@ -1,5 +1,8 @@
 package coordinate.domain;
 
+import static java.lang.Math.pow;
+import static java.lang.Math.sqrt;
+
 import java.util.Objects;
 
 class Coordinate {
@@ -32,6 +35,10 @@ class Coordinate {
         if (x < MIN_RANGE || y < MIN_RANGE) {
             throw new IllegalArgumentException("X, Y좌표 모두 음수가 될 수 없습니다.");
         }
+    }
+
+    public double calculateDistance(final Coordinate other) {
+        return sqrt(pow(x - other.x, 2) + pow(y - other.y, 2));
     }
 
     @Override
