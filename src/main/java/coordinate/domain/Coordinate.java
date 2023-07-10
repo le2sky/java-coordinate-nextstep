@@ -5,7 +5,7 @@ import static java.lang.Math.sqrt;
 
 import java.util.Objects;
 
-class Coordinate {
+public class Coordinate {
 
     private static final int MAX_RANGE = 24;
     private static final int MIN_RANGE = 0;
