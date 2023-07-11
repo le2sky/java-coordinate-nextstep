@@ -37,7 +37,7 @@ public class Coordinate {
         }
     }
 
-    public double calculateDistance(final Coordinate other) {
+    public double calculateDistanceWith(final Coordinate other) {
         return sqrt(pow(x - other.x, 2) + pow(y - other.y, 2));
     }
 

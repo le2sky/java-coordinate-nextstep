@@ -52,11 +52,11 @@ class CoordinateTest {
 
     @DisplayName("직선 길이를 계산한다.")
     @Test
-    void calculateDistance() {
+    void calculateDistanceWith() {
         Coordinate coordinate = Coordinate.of(10, 10);
         Coordinate other = Coordinate.of(14, 15);
 
-        double result = coordinate.calculateDistance(other);
+        double result = coordinate.calculateDistanceWith(other);
 
         assertThat(result).isEqualTo(6.403124, offset(0.00000099));
     }
