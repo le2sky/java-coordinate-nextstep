@@ -60,4 +60,12 @@ class CoordinateTest {
 
         assertThat(result).isEqualTo(6.403124, offset(0.00000099));
     }
+
+    @DisplayName("알 수 없는 값과는 거리를 계산할 수 없다.")
+    @Test
+    void calculateDistanceWithNull() {
+        assertThatThrownBy(() -> Coordinate.of(10, 10).calculateDistanceWith(null))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("알 수 없는 값과 거리를 계산할 수 없습니다.");
+    }
 }

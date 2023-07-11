@@ -1,21 +1,16 @@
 package coordinate.domain;
 
-import java.util.List;
-
 public class CoordinateCalculator {
 
-    public double calculateDistance(final List<Coordinate> coordinates) {
-        checkCoordinatesLength(coordinates);
+    public Straight makeStraight(final Coordinate from, final Coordinate into) {
+        checkCoordinates(from, into);
 
-        Coordinate from = coordinates.get(0);
-        Coordinate into = coordinates.get(1);
-
-        return from.calculateDistanceWith(into);
+        return Straight.of(from.calculateDistanceWith(into));
     }
 
-    private void checkCoordinatesLength(final List<Coordinate> coordinates) {
-        if (coordinates.size() != 2) {
-            throw new IllegalArgumentException("직선의 길이를 계산하려면 정확히 2 개의 좌표가 필요합니다.");
+    private void checkCoordinates(final Coordinate from, final Coordinate into) {
+        if (from == null || into == null) {
+            throw new IllegalArgumentException("존재하는 좌표값을 입력해주세요.");
         }
     }
 }
