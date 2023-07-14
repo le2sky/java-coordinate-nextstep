@@ -2,7 +2,6 @@ package coordinate;
 
 import coordinate.domain.Coordinate;
 import coordinate.domain.CoordinateCalculator;
-import coordinate.domain.Straight;
 import coordinate.view.InputView;
 import coordinate.view.OutputView;
 import java.util.List;
@@ -16,9 +15,7 @@ public class Application {
 
         OutputView.writeGraph(coordinates);
 
-        Straight straight = coordinateCalculator.makeStraight(coordinates.get(0),
-                coordinates.get(1));
-
-        OutputView.writeStraightLength(straight);
+        OutputView.writeStraightLength(coordinateCalculator.makeStraight(coordinates.get(0),
+                coordinates.get(1)));
     }
 }
