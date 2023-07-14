@@ -14,6 +14,8 @@ public class Application {
 
         CoordinateCalculator coordinateCalculator = new CoordinateCalculator();
 
+        OutputView.writeGraph(coordinates);
+
         Straight straight = coordinateCalculator.makeStraight(coordinates.get(0),
                 coordinates.get(1));
 
