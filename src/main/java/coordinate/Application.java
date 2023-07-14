@@ -15,7 +15,9 @@ public class Application {
 
         OutputView.writeGraph(coordinates);
 
-        OutputView.writeStraightLength(coordinateCalculator.makeStraight(coordinates.get(0),
-                coordinates.get(1)));
+        if (coordinates.size() == 2) {
+            OutputView.writeStraightLength(coordinateCalculator.makeStraight(coordinates.get(0),
+                    coordinates.get(1)));
+        }
     }
 }
