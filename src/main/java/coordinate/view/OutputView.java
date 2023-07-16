@@ -7,7 +7,7 @@ import java.util.List;
 
 public class OutputView {
 
-    private static final String WRITE_STRAIGHT_LENGTH_MESSAGE = "두 점 사이 거리는 %.6f";
+    private static final String WRITE_STRAIGHT_LENGTH_MESSAGE = "두 점 사이 거리는 %f";
     private static final String HORIZONTAL_DIVIDER_HEADER = "  +";
     private static final String HORIZONTAL_DIVIDER = "―――";
     private static final String VERTICAL_DIVIDER = "|";
