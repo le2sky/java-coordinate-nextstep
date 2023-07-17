@@ -8,7 +8,7 @@ public class CoordinateCalculator {
     public Straight makeStraight(final Coordinate from, final Coordinate into) {
         checkCoordinates(from, into);
 
-        return Straight.of(from.calculateDistanceWith(into));
+        return Straight.from(from.calculateDistanceWith(into));
     }
 
     private void checkCoordinates(final Coordinate from, final Coordinate into) {

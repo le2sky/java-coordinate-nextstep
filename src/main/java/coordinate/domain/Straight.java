@@ -8,7 +8,7 @@ public class Straight {
         this.length = length;
     }
 
-    public static Straight of(final double length) {
+    public static Straight from(final double length) {
         return new Straight(length);
     }
 
