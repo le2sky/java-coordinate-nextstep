@@ -4,6 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.Assertions.offset;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -35,5 +37,20 @@ class CoordinateCalculatorTest {
         assertThatThrownBy(() -> coordinatecalculator.makeStraight(null, into))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("존재하는 좌표값을 입력해주세요.");
+    }
+
+    @DisplayName("좌표의 목록을 받으면 사각형을 생성한다.")
+    @Test
+    void calculateSquareArea() {
+        CoordinateCalculator coordinatecalculator = new CoordinateCalculator();
+        List<Coordinate> coordinates = new ArrayList<>();
+        coordinates.add(Coordinate.of(10, 10));
+        coordinates.add(Coordinate.of(22, 10));
+        coordinates.add(Coordinate.of(22, 18));
+        coordinates.add(Coordinate.of(10, 18));
+
+        double result = coordinatecalculator.calculateSquareArea(coordinates);
+
+        assertThat(result).isEqualTo(96.0, offset(0.99));
     }
 }
