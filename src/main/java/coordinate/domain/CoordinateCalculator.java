@@ -17,7 +17,11 @@ public class CoordinateCalculator {
         }
     }
 
-    public double calculateSquareArea(final List<Coordinate> coordinates) {
+    public Square makeSquare(final List<Coordinate> coordinates) {
+        return Square.from(calculateSquareArea(coordinates));
+    }
+
+    private double calculateSquareArea(final List<Coordinate> coordinates) {
         Coordinate cornerCoordinates = findCorner(coordinates);
         double width = calculateWidth(coordinates, cornerCoordinates);
         double height = calculateHeight(coordinates, cornerCoordinates);

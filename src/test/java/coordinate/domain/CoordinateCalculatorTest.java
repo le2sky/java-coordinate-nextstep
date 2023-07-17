@@ -41,7 +41,7 @@ class CoordinateCalculatorTest {
 
     @DisplayName("좌표의 목록을 받으면 사각형을 생성한다.")
     @Test
-    void calculateSquareArea() {
+    void makeSquare() {
         CoordinateCalculator coordinatecalculator = new CoordinateCalculator();
         List<Coordinate> coordinates = new ArrayList<>();
         coordinates.add(Coordinate.of(10, 10));
@@ -49,8 +49,8 @@ class CoordinateCalculatorTest {
         coordinates.add(Coordinate.of(22, 18));
         coordinates.add(Coordinate.of(10, 18));
 
-        double result = coordinatecalculator.calculateSquareArea(coordinates);
+        Square result = coordinatecalculator.makeSquare(coordinates);
 
-        assertThat(result).isEqualTo(96.0, offset(0.99));
+        assertThat(result.getArea()).isEqualTo(96.0, offset(0.99));
     }
 }
