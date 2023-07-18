@@ -18,7 +18,7 @@ public class Application {
         if (points.size() == 2) {
             OutputView.writeStraightLength(coordinateCalculator.makeStraight(points.get(0),
                     points.get(1)));
-        } else {
+        } else if (points.size() == 4) {
             OutputView.writeSquareArea(coordinateCalculator.makeSquare(points));
         }
     }
