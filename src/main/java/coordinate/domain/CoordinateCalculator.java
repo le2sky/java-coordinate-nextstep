@@ -49,25 +49,23 @@ public class CoordinateCalculator {
         return count == 2;
     }
 
-    private double calculateWidth(final List<Point> points,
-            final Point cornerCoordinates) {
+    private double calculateWidth(final List<Point> points, final Point corner) {
         Point widthInto = points.stream()
-                .filter(coordinate -> !coordinate.equals(cornerCoordinates)
-                        && coordinate.getX() == cornerCoordinates.getX())
+                .filter(coordinate -> !coordinate.equals(corner)
+                        && coordinate.getX() == corner.getX())
                 .findFirst()
                 .orElseThrow(IllegalArgumentException::new);
 
-        return cornerCoordinates.calculateDistanceWith(widthInto);
+        return corner.calculateDistanceWith(widthInto);
     }
 
-    private double calculateHeight(final List<Point> points,
-            final Point cornerCoordinates) {
+    private double calculateHeight(final List<Point> points, final Point corner) {
         Point heightInto = points.stream()
-                .filter(coordinate -> !coordinate.equals(cornerCoordinates)
-                        && coordinate.getY() == cornerCoordinates.getY())
+                .filter(coordinate -> !coordinate.equals(corner)
+                        && coordinate.getY() == corner.getY())
                 .findFirst()
                 .orElseThrow(IllegalArgumentException::new);
 
-        return cornerCoordinates.calculateDistanceWith(heightInto);
+        return corner.calculateDistanceWith(heightInto);
     }
 }
