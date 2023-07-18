@@ -5,7 +5,7 @@ import static java.lang.Math.sqrt;
 
 import java.util.Objects;
 
-public class Coordinate {
+public class Point {
 
     private static final int MAX_RANGE = 24;
     private static final int MIN_RANGE = 0;
@@ -13,7 +13,7 @@ public class Coordinate {
     private final int x;
     private final int y;
 
-    public Coordinate(final int x, final int y) {
+    public Point(final int x, final int y) {
         checkRange(x, y);
         checkNegative(x, y);
 
@@ -21,8 +21,8 @@ public class Coordinate {
         this.y = y;
     }
 
-    public static Coordinate of(final int x, final int y) {
-        return new Coordinate(x, y);
+    public static Point of(final int x, final int y) {
+        return new Point(x, y);
     }
 
     private void checkRange(final int x, final int y) {
@@ -37,13 +37,13 @@ public class Coordinate {
         }
     }
 
-    public double calculateDistanceWith(final Coordinate other) {
+    public double calculateDistanceWith(final Point other) {
         checkUnknownCoordinate(other);
 
         return sqrt(pow(x - other.x, 2) + pow(y - other.y, 2));
     }
 
-    private static void checkUnknownCoordinate(final Coordinate other) {
+    private static void checkUnknownCoordinate(final Point other) {
         if (other == null) {
             throw new IllegalArgumentException("알 수 없는 값과 거리를 계산할 수 없습니다.");
         }
@@ -65,7 +65,7 @@ public class Coordinate {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Coordinate that = (Coordinate) o;
+        Point that = (Point) o;
         return x == that.x && y == that.y;
     }
 

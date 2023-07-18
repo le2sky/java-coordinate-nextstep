@@ -1,6 +1,6 @@
 package coordinate.view;
 
-import coordinate.domain.Coordinate;
+import coordinate.domain.Point;
 import coordinate.domain.Straight;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,21 +11,21 @@ public class OutputView {
     private static final String HORIZONTAL_DIVIDER_HEADER = "  +";
     private static final String HORIZONTAL_DIVIDER = "―――";
     private static final String VERTICAL_DIVIDER = "|";
-    private static final String COORDINATE_SHAPE = " ● ";
+    private static final String POINT_SHAPE = " ● ";
     private static final String EMPTY_SPACE_SHAPE = "   ";
-    private static final int MAX_COORDINATE_RANGE = 24;
+    private static final int MAX_POINT_RANGE = 24;
 
     public static void writeStraightLength(final Straight straight) {
         System.out.println(String.format(WRITE_STRAIGHT_LENGTH_MESSAGE, straight.getLength()));
     }
 
-    public static void writeGraph(final List<Coordinate> coordinates) {
+    public static void writeGraph(final List<Point> points) {
         List<List<String>> graph = generateGraph();
 
-        for (Coordinate coordinate : coordinates) {
-            List<String> foundRow = graph.get(MAX_COORDINATE_RANGE - coordinate.getY());
+        for (Point point : points) {
+            List<String> foundRow = graph.get(MAX_POINT_RANGE - point.getY());
 
-            foundRow.set(coordinate.getX(), COORDINATE_SHAPE);
+            foundRow.set(point.getX(), POINT_SHAPE);
         }
 
         writeMarkedGraph(graph);
@@ -34,7 +34,7 @@ public class OutputView {
     private static List<List<String>> generateGraph() {
         List<List<String>> graph = new ArrayList<>();
 
-        for (int rowNo = MAX_COORDINATE_RANGE; rowNo > 0; rowNo--) {
+        for (int rowNo = MAX_POINT_RANGE; rowNo > 0; rowNo--) {
             graph.add(generateRow(rowNo));
         }
 
@@ -48,7 +48,7 @@ public class OutputView {
         List<String> row = new ArrayList<>();
         row.add(generateVerticalHeader(rowNo));
 
-        for (int i = MAX_COORDINATE_RANGE; i > 0; i--) {
+        for (int i = MAX_POINT_RANGE; i > 0; i--) {
             row.add(EMPTY_SPACE_SHAPE);
         }
 
@@ -75,7 +75,7 @@ public class OutputView {
         List<String> dividers = new ArrayList<>();
         dividers.add(HORIZONTAL_DIVIDER_HEADER);
 
-        for (int i = 0; i < MAX_COORDINATE_RANGE; i++) {
+        for (int i = 0; i < MAX_POINT_RANGE; i++) {
             dividers.add(HORIZONTAL_DIVIDER);
         }
 
@@ -86,7 +86,7 @@ public class OutputView {
         List<String> horizontalGraduations = new ArrayList<>();
         horizontalGraduations.add(addLeftEmptyPadding(0) + " ");
 
-        for (int colNo = 1; colNo < MAX_COORDINATE_RANGE + 1; colNo++) {
+        for (int colNo = 1; colNo < MAX_POINT_RANGE + 1; colNo++) {
             horizontalGraduations.add(generateEachHorizontalGraduation(colNo));
         }
 

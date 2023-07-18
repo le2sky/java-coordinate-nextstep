@@ -15,8 +15,8 @@ class CoordinateCalculatorTest {
     @Test
     void calculateDistance() {
         CoordinateCalculator coordinatecalculator = new CoordinateCalculator();
-        Coordinate from = Coordinate.of(10, 10);
-        Coordinate into = Coordinate.of(14, 15);
+        Point from = Point.of(10, 10);
+        Point into = Point.of(14, 15);
 
         Straight result = coordinatecalculator.makeStraight(from, into);
 
@@ -25,10 +25,10 @@ class CoordinateCalculatorTest {
 
     @DisplayName("주어진 좌표는 존재하는 좌표여야 한다.")
     @Test
-    void checkCoordinates() {
+    void checkPoints() {
         CoordinateCalculator coordinatecalculator = new CoordinateCalculator();
-        Coordinate from = Coordinate.of(10, 10);
-        Coordinate into = Coordinate.of(14, 15);
+        Point from = Point.of(10, 10);
+        Point into = Point.of(14, 15);
 
         assertThatThrownBy(() -> coordinatecalculator.makeStraight(from, null))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -43,13 +43,13 @@ class CoordinateCalculatorTest {
     @Test
     void makeSquare() {
         CoordinateCalculator coordinatecalculator = new CoordinateCalculator();
-        List<Coordinate> coordinates = new ArrayList<>();
-        coordinates.add(Coordinate.of(10, 10));
-        coordinates.add(Coordinate.of(22, 10));
-        coordinates.add(Coordinate.of(22, 18));
-        coordinates.add(Coordinate.of(10, 18));
+        List<Point> points = new ArrayList<>();
+        points.add(Point.of(10, 10));
+        points.add(Point.of(22, 10));
+        points.add(Point.of(22, 18));
+        points.add(Point.of(10, 18));
 
-        Square result = coordinatecalculator.makeSquare(coordinates);
+        Square result = coordinatecalculator.makeSquare(points);
 
         assertThat(result.getArea()).isEqualTo(96.0, offset(0.99));
     }

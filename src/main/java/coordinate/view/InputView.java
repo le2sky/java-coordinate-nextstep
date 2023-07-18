@@ -1,25 +1,25 @@
 package coordinate.view;
 
-import coordinate.domain.Coordinate;
+import coordinate.domain.Point;
 import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
 
-    public static List<Coordinate> readCoordinate() {
+    public static List<Point> readPoints() {
         System.out.println("좌표를 입력하세요.");
         String input = readLine();
 
-        List<Coordinate> coordinates;
+        List<Point> points;
         try {
-            coordinates = InputMapper.mapToCoordinates(input);
+            points = InputMapper.mapToPoints(input);
         } catch (IllegalArgumentException e) {
             System.out.println("[ERROR] " + e.getMessage());
 
-            return readCoordinate();
+            return readPoints();
         }
 
-        return coordinates;
+        return points;
     }
 
     private static String readLine() {
