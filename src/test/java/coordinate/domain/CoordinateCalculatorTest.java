@@ -53,4 +53,24 @@ class CoordinateCalculatorTest {
 
         assertThat(result.getArea()).isEqualTo(96.0, offset(0.99));
     }
+
+    @DisplayName("사각형을 만들기 위해서는 4개의 좌표가 필요하다.")
+    @Test
+    void checkPointsForMakeSquare() {
+        CoordinateCalculator coordinatecalculator = new CoordinateCalculator();
+        List<Point> points = new ArrayList<>();
+        points.add(Point.of(10, 10));
+        points.add(Point.of(22, 10));
+        points.add(Point.of(22, 18));
+
+        assertThatThrownBy(() -> coordinatecalculator.makeSquare(points))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("사각형을 만들려면 정확히 4개의 좌표가 필요합니다.");
+
+        points.add(Point.of(1, 2));
+        points.add(Point.of(3, 13));
+        assertThatThrownBy(() -> coordinatecalculator.makeSquare(points))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("사각형을 만들려면 정확히 4개의 좌표가 필요합니다.");
+    }
 }

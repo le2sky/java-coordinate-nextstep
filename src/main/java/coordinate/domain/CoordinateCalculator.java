@@ -5,6 +5,8 @@ import java.util.Optional;
 
 public class CoordinateCalculator {
 
+    private static final int SQUARE_VERTEX = 4;
+
     public Straight makeStraight(final Point from, final Point into) {
         checkPoints(from, into);
 
@@ -18,7 +20,15 @@ public class CoordinateCalculator {
     }
 
     public Square makeSquare(final List<Point> points) {
+        checkPointsLengthForSquare(points);
+
         return Square.from(calculateSquareArea(points));
+    }
+
+    private void checkPointsLengthForSquare(final List<Point> points) {
+        if (points.size() != SQUARE_VERTEX) {
+            throw new IllegalArgumentException("사각형을 만들려면 정확히 4개의 좌표가 필요합니다.");
+        }
     }
 
     private double calculateSquareArea(final List<Point> points) {
