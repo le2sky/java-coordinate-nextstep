@@ -1,6 +1,7 @@
 package coordinate.view;
 
 import coordinate.domain.Point;
+import coordinate.domain.Square;
 import coordinate.domain.Straight;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.List;
 public class OutputView {
 
     private static final String WRITE_STRAIGHT_LENGTH_MESSAGE = "두 점 사이 거리는 %f";
+    private static final String WRITE_SQUARE_AREA_MESSAGE = "사각형 넓이는 %.0f";
     private static final String HORIZONTAL_DIVIDER_HEADER = "  +";
     private static final String HORIZONTAL_DIVIDER = "―――";
     private static final String VERTICAL_DIVIDER = "|";
@@ -17,6 +19,10 @@ public class OutputView {
 
     public static void writeStraightLength(final Straight straight) {
         System.out.println(String.format(WRITE_STRAIGHT_LENGTH_MESSAGE, straight.getLength()));
+    }
+
+    public static void writeSquareArea(final Square square) {
+        System.out.println(String.format(WRITE_SQUARE_AREA_MESSAGE, square.getArea()));
     }
 
     public static void writeGraph(final List<Point> points) {

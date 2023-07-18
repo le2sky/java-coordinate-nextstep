@@ -18,6 +18,8 @@ public class Application {
         if (points.size() == 2) {
             OutputView.writeStraightLength(coordinateCalculator.makeStraight(points.get(0),
                     points.get(1)));
+        } else {
+            OutputView.writeSquareArea(coordinateCalculator.makeSquare(points));
         }
     }
 }
