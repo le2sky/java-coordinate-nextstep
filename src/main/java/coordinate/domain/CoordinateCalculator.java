@@ -45,7 +45,7 @@ public class CoordinateCalculator {
     private void checkHasSameSide(final List<Point> points) {
         Point widthFrom = points.get(0);
         Point widthInto = points.stream()
-                .filter(point -> !point.equals(widthFrom) && point.getY() == point.getY())
+                .filter(point -> isInSameVerticalSide(widthFrom, point))
                 .findFirst()
                 .orElseThrow(
                         () -> new IllegalArgumentException(SQUARE_SHAPE_EXCEPTION_MESSAGE));
@@ -59,6 +59,10 @@ public class CoordinateCalculator {
         if (standardSide != targetSide) {
             throw new IllegalArgumentException(SQUARE_SHAPE_EXCEPTION_MESSAGE);
         }
+    }
+
+    private boolean isInSameVerticalSide(final Point target, final Point point) {
+        return !point.equals(target) && point.getY() == point.getY();
     }
 
     private Point findCorner(final List<Point> points) {
@@ -79,18 +83,20 @@ public class CoordinateCalculator {
 
     private double calculateWidth(final List<Point> points, final Point corner) {
         Point widthInto = points.stream()
-                .filter(coordinate -> !coordinate.equals(corner)
-                        && coordinate.getX() == corner.getX())
+                .filter(coordinate -> isInSameHorizontalSide(corner, coordinate))
                 .findFirst()
                 .orElseThrow(IllegalArgumentException::new);
 
         return corner.calculateDistanceWith(widthInto);
     }
 
+    private boolean isInSameHorizontalSide(final Point target, final Point point) {
+        return !point.equals(target) && point.getX() == target.getX();
+    }
+
     private double calculateHeight(final List<Point> points, final Point corner) {
         Point heightInto = points.stream()
-                .filter(coordinate -> !coordinate.equals(corner)
-                        && coordinate.getY() == corner.getY())
+                .filter(coordinate -> isInSameVerticalSide(corner, coordinate))
                 .findFirst()
                 .orElseThrow(IllegalArgumentException::new);
 
