@@ -22,7 +22,7 @@ public class OutputView {
     }
 
     public static void writeSquareArea(final Square square) {
-        System.out.println(String.format(WRITE_SQUARE_AREA_MESSAGE, square.getArea()));
+        System.out.println(String.format(WRITE_SQUARE_AREA_MESSAGE, square.calculateSquareArea()));
     }
 
     public static void writeGraph(final List<Point> points) {

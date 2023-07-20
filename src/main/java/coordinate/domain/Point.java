@@ -38,12 +38,12 @@ public class Point {
     }
 
     public double calculateDistanceWith(final Point other) {
-        checkUnknownCoordinate(other);
+        checkUnknownPoint(other);
 
         return sqrt(pow(x - other.x, 2) + pow(y - other.y, 2));
     }
 
-    private static void checkUnknownCoordinate(final Point other) {
+    private void checkUnknownPoint(final Point other) {
         if (other == null) {
             throw new IllegalArgumentException("알 수 없는 값과 거리를 계산할 수 없습니다.");
         }

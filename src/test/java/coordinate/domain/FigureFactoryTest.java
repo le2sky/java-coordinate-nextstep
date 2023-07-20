@@ -9,12 +9,12 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class CoordinateCalculatorTest {
+class FigureFactoryTest {
 
     @DisplayName("두 좌표를 받으면, 직선을 생성한다.")
     @Test
     void calculateDistance() {
-        CoordinateCalculator coordinatecalculator = new CoordinateCalculator();
+        FigureFactory coordinatecalculator = new FigureFactory();
         Point from = Point.of(10, 10);
         Point into = Point.of(14, 15);
 
@@ -26,7 +26,7 @@ class CoordinateCalculatorTest {
     @DisplayName("주어진 좌표는 존재하는 좌표여야 한다.")
     @Test
     void checkPoints() {
-        CoordinateCalculator coordinatecalculator = new CoordinateCalculator();
+        FigureFactory coordinatecalculator = new FigureFactory();
         Point from = Point.of(10, 10);
         Point into = Point.of(14, 15);
 
@@ -42,7 +42,7 @@ class CoordinateCalculatorTest {
     @DisplayName("좌표의 목록을 받으면 사각형을 생성한다.")
     @Test
     void makeSquare() {
-        CoordinateCalculator coordinatecalculator = new CoordinateCalculator();
+        FigureFactory coordinatecalculator = new FigureFactory();
         List<Point> points = new ArrayList<>();
         points.add(Point.of(10, 10));
         points.add(Point.of(22, 10));
@@ -51,13 +51,13 @@ class CoordinateCalculatorTest {
 
         Square result = coordinatecalculator.makeSquare(points);
 
-        assertThat(result.getArea()).isEqualTo(96.0, offset(0.99));
+        assertThat(result.calculateSquareArea()).isEqualTo(96.0, offset(0.99));
     }
 
     @DisplayName("사각형을 만들기 위해서는 4개의 좌표가 필요하다.")
     @Test
     void checkPointsForMakeSquare() {
-        CoordinateCalculator coordinatecalculator = new CoordinateCalculator();
+        FigureFactory coordinatecalculator = new FigureFactory();
         List<Point> points = new ArrayList<>();
         points.add(Point.of(10, 10));
         points.add(Point.of(22, 10));
@@ -77,7 +77,7 @@ class CoordinateCalculatorTest {
     @DisplayName("찌그러진 사각형은 허용하지 않는다.")
     @Test
     void checkSquare() {
-        CoordinateCalculator coordinatecalculator = new CoordinateCalculator();
+        FigureFactory coordinatecalculator = new FigureFactory();
         List<Point> points = new ArrayList<>();
         points.add(Point.of(8, 4));
         points.add(Point.of(10, 3));
@@ -92,7 +92,7 @@ class CoordinateCalculatorTest {
     @DisplayName("사다리꼴은 허용되지 않는다.")
     @Test
     void checkTrapezoid() {
-        CoordinateCalculator coordinatecalculator = new CoordinateCalculator();
+        FigureFactory coordinatecalculator = new FigureFactory();
         List<Point> points = new ArrayList<>();
         points.add(Point.of(8, 4));
         points.add(Point.of(11, 4));
@@ -107,7 +107,7 @@ class CoordinateCalculatorTest {
     @DisplayName("등변 사다리꼴은 허용되지 않는다.")
     @Test
     void checkIsoscelesTrapezoid() {
-        CoordinateCalculator coordinatecalculator = new CoordinateCalculator();
+        FigureFactory coordinatecalculator = new FigureFactory();
         List<Point> points = new ArrayList<>();
         points.add(Point.of(8, 4));
         points.add(Point.of(10, 4));
@@ -122,7 +122,7 @@ class CoordinateCalculatorTest {
     @DisplayName("마름모는 허용되지 않는다.")
     @Test
     void checkDiamond() {
-        CoordinateCalculator coordinatecalculator = new CoordinateCalculator();
+        FigureFactory coordinatecalculator = new FigureFactory();
         List<Point> points = new ArrayList<>();
         points.add(Point.of(8, 3));
         points.add(Point.of(4, 2));
