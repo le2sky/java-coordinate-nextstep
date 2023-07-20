@@ -1,11 +1,12 @@
 package coordinate.domain;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class CoordinateCalculator {
 
     private static final int SQUARE_VERTEX = 4;
+    private static final String SQUARE_SHAPE_EXCEPTION_MESSAGE = "사각형은 사다리꼴, 마름모를 제외한 직사각형만 허용합니다.";
 
     public Straight makeStraight(final Point from, final Point into) {
         checkPoints(from, into);
@@ -32,6 +33,8 @@ public class CoordinateCalculator {
     }
 
     private double calculateSquareArea(final List<Point> points) {
+        checkHasSameSide(points);
+
         Point cornerCoordinates = findCorner(points);
         double width = calculateWidth(points, cornerCoordinates);
         double height = calculateHeight(points, cornerCoordinates);
@@ -39,15 +42,30 @@ public class CoordinateCalculator {
         return width * height;
     }
 
-    private Point findCorner(final List<Point> points) {
-        Optional<Point> corner = Optional.empty();
-        for (Point point : points) {
-            if (isCorner(points, point)) {
-                corner = Optional.of(point);
-            }
-        }
+    private void checkHasSameSide(final List<Point> points) {
+        Point widthFrom = points.get(0);
+        Point widthInto = points.stream()
+                .filter(point -> !point.equals(widthFrom) && point.getY() == point.getY())
+                .findFirst()
+                .orElseThrow(
+                        () -> new IllegalArgumentException(SQUARE_SHAPE_EXCEPTION_MESSAGE));
+        double standardSide = widthFrom.calculateDistanceWith(widthInto);
 
-        return corner.orElseThrow(IllegalArgumentException::new);
+        List<Point> target = points.stream()
+                .filter(point -> !point.equals(widthFrom) && !point.equals(widthInto))
+                .collect(Collectors.toList());
+        double targetSide = target.get(0).calculateDistanceWith(target.get(1));
+
+        if (standardSide != targetSide) {
+            throw new IllegalArgumentException(SQUARE_SHAPE_EXCEPTION_MESSAGE);
+        }
+    }
+
+    private Point findCorner(final List<Point> points) {
+        return points.stream().filter(p -> isCorner(points, p))
+                .findFirst()
+                .orElseThrow(
+                        () -> new IllegalArgumentException(SQUARE_SHAPE_EXCEPTION_MESSAGE));
     }
 
     private boolean isCorner(final List<Point> points, final Point point) {

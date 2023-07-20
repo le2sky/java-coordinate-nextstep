@@ -73,4 +73,64 @@ class CoordinateCalculatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("사각형을 만들려면 정확히 4개의 좌표가 필요합니다.");
     }
+
+    @DisplayName("찌그러진 사각형은 허용하지 않는다.")
+    @Test
+    void checkSquare() {
+        CoordinateCalculator coordinatecalculator = new CoordinateCalculator();
+        List<Point> points = new ArrayList<>();
+        points.add(Point.of(8, 4));
+        points.add(Point.of(10, 3));
+        points.add(Point.of(6, 1));
+        points.add(Point.of(11, 1));
+
+        assertThatThrownBy(() -> coordinatecalculator.makeSquare(points))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("사각형은 사다리꼴, 마름모를 제외한 직사각형만 허용합니다.");
+    }
+
+    @DisplayName("사다리꼴은 허용되지 않는다.")
+    @Test
+    void checkTrapezoid() {
+        CoordinateCalculator coordinatecalculator = new CoordinateCalculator();
+        List<Point> points = new ArrayList<>();
+        points.add(Point.of(8, 4));
+        points.add(Point.of(11, 4));
+        points.add(Point.of(6, 1));
+        points.add(Point.of(11, 1));
+
+        assertThatThrownBy(() -> coordinatecalculator.makeSquare(points))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("사각형은 사다리꼴, 마름모를 제외한 직사각형만 허용합니다.");
+    }
+
+    @DisplayName("등변 사다리꼴은 허용되지 않는다.")
+    @Test
+    void checkIsoscelesTrapezoid() {
+        CoordinateCalculator coordinatecalculator = new CoordinateCalculator();
+        List<Point> points = new ArrayList<>();
+        points.add(Point.of(8, 4));
+        points.add(Point.of(10, 4));
+        points.add(Point.of(6, 1));
+        points.add(Point.of(12, 1));
+
+        assertThatThrownBy(() -> coordinatecalculator.makeSquare(points))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("사각형은 사다리꼴, 마름모를 제외한 직사각형만 허용합니다.");
+    }
+
+    @DisplayName("마름모는 허용되지 않는다.")
+    @Test
+    void checkDiamond() {
+        CoordinateCalculator coordinatecalculator = new CoordinateCalculator();
+        List<Point> points = new ArrayList<>();
+        points.add(Point.of(8, 3));
+        points.add(Point.of(4, 2));
+        points.add(Point.of(8, 1));
+        points.add(Point.of(12, 2));
+
+        assertThatThrownBy(() -> coordinatecalculator.makeSquare(points))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("사각형은 사다리꼴, 마름모를 제외한 직사각형만 허용합니다.");
+    }
 }
