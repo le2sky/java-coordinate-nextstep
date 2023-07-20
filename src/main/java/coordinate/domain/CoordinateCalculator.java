@@ -9,15 +9,7 @@ public class CoordinateCalculator {
     private static final String SQUARE_SHAPE_EXCEPTION_MESSAGE = "사각형은 사다리꼴, 마름모를 제외한 직사각형만 허용합니다.";
 
     public Straight makeStraight(final Point from, final Point into) {
-        checkPoints(from, into);
-
-        return Straight.from(from.calculateDistanceWith(into));
-    }
-
-    private void checkPoints(final Point from, final Point into) {
-        if (from == null || into == null) {
-            throw new IllegalArgumentException("존재하는 좌표값을 입력해주세요.");
-        }
+        return Straight.of(from, into);
     }
 
     public Square makeSquare(final List<Point> points) {

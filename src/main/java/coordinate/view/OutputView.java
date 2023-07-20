@@ -18,7 +18,7 @@ public class OutputView {
     private static final int MAX_POINT_RANGE = 24;
 
     public static void writeStraightLength(final Straight straight) {
-        System.out.println(String.format(WRITE_STRAIGHT_LENGTH_MESSAGE, straight.getLength()));
+        System.out.println(String.format(WRITE_STRAIGHT_LENGTH_MESSAGE, straight.calculateLength()));
     }
 
     public static void writeSquareArea(final Square square) {

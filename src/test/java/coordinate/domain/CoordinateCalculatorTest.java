@@ -20,7 +20,7 @@ class CoordinateCalculatorTest {
 
         Straight result = coordinatecalculator.makeStraight(from, into);
 
-        assertThat(result.getLength()).isEqualTo(6.403124, offset(0.00000099));
+        assertThat(result.calculateLength()).isEqualTo(6.403124, offset(0.00000099));
     }
 
     @DisplayName("주어진 좌표는 존재하는 좌표여야 한다.")
