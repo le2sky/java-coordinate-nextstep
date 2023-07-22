@@ -5,7 +5,7 @@ public class Straight {
     private final Point from;
     private final Point into;
 
-    private Straight(Point from, Point into) {
+    private Straight(final Point from, final Point into) {
         checkPoints(from, into);
 
         this.from = from;

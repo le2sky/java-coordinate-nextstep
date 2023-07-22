@@ -14,7 +14,7 @@ public class Square {
 
     private final List<Point> points;
 
-    private Square(List<Point> points) {
+    private Square(final List<Point> points) {
         checkPoints(points);
 
         this.points = points;
@@ -121,7 +121,7 @@ public class Square {
         return count == MIN_NEIGHBOR_VERTEX;
     }
 
-    private boolean isNeighborPoint(Point point, Point other) {
+    private boolean isNeighborPoint(final Point point, final Point other) {
         return (isSameVerticalSide(point, other) ||
                 isSameHorizontalSide(point, other));
     }
