@@ -2,6 +2,7 @@ package coordinate.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -14,9 +15,7 @@ public class Square {
     private final List<Point> points;
 
     private Square(List<Point> points) {
-        checkPointsLength(points);
-        checkHasSameSide(points);
-        checkHasCorner(points);
+        checkPoints(points);
 
         this.points = points;
     }
@@ -25,9 +24,33 @@ public class Square {
         return new Square(points);
     }
 
+    private void checkPoints(final List<Point> points) {
+        checkPointsNull(points);
+        checkPointsLength(points);
+        checkIncludeNull(points);
+        checkHasSameSide(points);
+        checkHasCorner(points);
+    }
+
+    private void checkPointsNull(final List<Point> points) {
+        if (points == null) {
+            throw new IllegalArgumentException("유효한 좌표 목록을 입력해주세요.");
+        }
+    }
+
     private void checkPointsLength(final List<Point> points) {
         if (points.size() != SQUARE_VERTEX) {
             throw new IllegalArgumentException("사각형을 만들려면 정확히 4개의 좌표가 필요합니다.");
+        }
+    }
+
+    private void checkIncludeNull(final List<Point> points) {
+        boolean isIncluded = points.stream()
+                .filter(Objects::nonNull)
+                .count() != SQUARE_VERTEX;
+
+        if (isIncluded) {
+            throw new IllegalArgumentException("존재하는 좌표값을 입력해주세요.");
         }
     }
 
