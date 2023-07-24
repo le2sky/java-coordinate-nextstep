@@ -42,4 +42,13 @@ public class Triangle {
             throw new IllegalArgumentException("존재하는 좌표값을 입력해주세요.");
         }
     }
+
+    public double calculateTriangleArea() {
+        double a = points.get(0).calculateDistanceWith(points.get(1));
+        double b = points.get(1).calculateDistanceWith(points.get(2));
+        double c = points.get(0).calculateDistanceWith(points.get(2));
+        double s = (a + b + c) / 2;
+
+        return Math.sqrt(((s * s) - (s * a)) * (s - b) * (s - c));
+    }
 }
