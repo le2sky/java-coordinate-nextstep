@@ -11,4 +11,8 @@ public class FigureFactory {
     public Square makeSquare(final List<Point> points) {
         return Square.from(points);
     }
+
+    public Triangle makeTriangle(final List<Point> points) {
+        return Triangle.from(points);
+    }
 }

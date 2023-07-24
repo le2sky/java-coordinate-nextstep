@@ -3,6 +3,7 @@ package coordinate.view;
 import coordinate.domain.Point;
 import coordinate.domain.Square;
 import coordinate.domain.Straight;
+import coordinate.domain.Triangle;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +11,7 @@ public class OutputView {
 
     private static final String WRITE_STRAIGHT_LENGTH_MESSAGE = "두 점 사이 거리는 %f";
     private static final String WRITE_SQUARE_AREA_MESSAGE = "사각형 넓이는 %.0f";
+    private static final String WRITE_TRIANGLE_AREA_MESSAGE = "삼각형 넓이는 %.1f";
     private static final String HORIZONTAL_DIVIDER_HEADER = "  +";
     private static final String HORIZONTAL_DIVIDER = "―――";
     private static final String VERTICAL_DIVIDER = "|";
@@ -18,11 +20,17 @@ public class OutputView {
     private static final int MAX_POINT_RANGE = 24;
 
     public static void writeStraightLength(final Straight straight) {
-        System.out.println(String.format(WRITE_STRAIGHT_LENGTH_MESSAGE, straight.calculateLength()));
+        System.out.println(
+                String.format(WRITE_STRAIGHT_LENGTH_MESSAGE, straight.calculateLength()));
     }
 
     public static void writeSquareArea(final Square square) {
         System.out.println(String.format(WRITE_SQUARE_AREA_MESSAGE, square.calculateSquareArea()));
+    }
+
+    public static void writeTriangleArea(final Triangle triangle) {
+        System.out.println(
+                String.format(WRITE_TRIANGLE_AREA_MESSAGE, triangle.calculateTriangleArea()));
     }
 
     public static void writeGraph(final List<Point> points) {

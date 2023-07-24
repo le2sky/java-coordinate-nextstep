@@ -18,6 +18,8 @@ public class Application {
         if (points.size() == 2) {
             OutputView.writeStraightLength(figureFactory.makeStraight(points.get(0),
                     points.get(1)));
+        } else if (points.size() == 3) {
+            OutputView.writeTriangleArea(figureFactory.makeTriangle(points));
         } else if (points.size() == 4) {
             OutputView.writeSquareArea(figureFactory.makeSquare(points));
         }
