@@ -10,8 +10,8 @@ public class Triangle {
     private final List<Point> points;
 
     private Triangle(final List<Point> points) {
-        checkPointsLength(points);
         checkPointsNull(points);
+        checkPointsLength(points);
         checkIncludeNull(points);
 
         this.points = points;
