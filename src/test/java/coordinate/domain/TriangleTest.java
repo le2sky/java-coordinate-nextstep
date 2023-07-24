@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 class TriangleTest {
 
-    @DisplayName("좌표의 목록을 받으면 사각형을 생성한다.")
+    @DisplayName("좌표의 목록을 받으면 삼각형을 생성한다.")
     @Test
     void makeTriangle() {
         List<Point> points = new ArrayList<>();
