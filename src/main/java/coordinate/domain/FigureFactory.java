@@ -19,7 +19,7 @@ public class FigureFactory {
         }
     }
 
-    private void checkPointsNull(List<Point> points) {
+    private void checkPointsNull(final List<Point> points) {
         if (points == null) {
             throw new IllegalArgumentException("유효한 좌표 목록을 입력해주세요.");
         }
