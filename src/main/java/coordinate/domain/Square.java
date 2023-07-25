@@ -2,7 +2,6 @@ package coordinate.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -12,45 +11,23 @@ class Square implements Figure {
     private static final String SQUARE_SHAPE_EXCEPTION_MESSAGE = "사각형은 사다리꼴, 마름모를 제외한 직사각형만 허용합니다.";
     private static final int MIN_NEIGHBOR_VERTEX = 2;
 
-    private final List<Point> points;
+    private final Points points;
 
-    private Square(final List<Point> points) {
-        checkPoints(points);
+    private Square(final Points points) {
+        checkPointsLength(points.getPoints());
+        checkHasSameSide(points.getPoints());
+        checkHasCorner(points.getPoints());
 
         this.points = points;
     }
 
     public static Square from(final List<Point> points) {
-        return new Square(points);
-    }
-
-    private void checkPoints(final List<Point> points) {
-        checkPointsNull(points);
-        checkPointsLength(points);
-        checkIncludeNull(points);
-        checkHasSameSide(points);
-        checkHasCorner(points);
-    }
-
-    private void checkPointsNull(final List<Point> points) {
-        if (points == null) {
-            throw new IllegalArgumentException("유효한 좌표 목록을 입력해주세요.");
-        }
+        return new Square(Points.from(points));
     }
 
     private void checkPointsLength(final List<Point> points) {
         if (points.size() != SQUARE_VERTEX) {
             throw new IllegalArgumentException("사각형을 만들려면 정확히 4개의 좌표가 필요합니다.");
-        }
-    }
-
-    private void checkIncludeNull(final List<Point> points) {
-        boolean isIncluded = points.stream()
-                .filter(Objects::nonNull)
-                .count() != SQUARE_VERTEX;
-
-        if (isIncluded) {
-            throw new IllegalArgumentException("존재하는 좌표값을 입력해주세요.");
         }
     }
 
@@ -101,9 +78,9 @@ class Square implements Figure {
 
     @Override
     public double measure() {
-        Point corner = findCorner(points).orElseThrow(InternalError::new);
-        double width = calculateWidth(points, corner);
-        double height = calculateHeight(points, corner);
+        Point corner = findCorner(points.getPoints()).orElseThrow(InternalError::new);
+        double width = calculateWidth(points.getPoints(), corner);
+        double height = calculateHeight(points.getPoints(), corner);
 
         return width * height;
     }
