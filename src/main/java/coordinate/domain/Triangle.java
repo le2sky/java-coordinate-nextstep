@@ -3,7 +3,7 @@ package coordinate.domain;
 import java.util.List;
 import java.util.Objects;
 
-public class Triangle implements Figure {
+class Triangle implements Figure {
 
     private static final int TRIANGLE_VERTEX = 3;
 

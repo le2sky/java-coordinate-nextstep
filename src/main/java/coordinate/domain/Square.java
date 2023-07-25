@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class Square implements Figure {
+class Square implements Figure {
 
     private static final int SQUARE_VERTEX = 4;
     private static final String SQUARE_SHAPE_EXCEPTION_MESSAGE = "사각형은 사다리꼴, 마름모를 제외한 직사각형만 허용합니다.";

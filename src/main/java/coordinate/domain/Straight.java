@@ -1,6 +1,6 @@
 package coordinate.domain;
 
-public class Straight implements Figure {
+class Straight implements Figure {
 
     private final Point from;
     private final Point into;
