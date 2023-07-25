@@ -1,6 +1,6 @@
 package coordinate.domain;
 
-interface Figure {
+public interface Figure {
 
     double measure();
 }

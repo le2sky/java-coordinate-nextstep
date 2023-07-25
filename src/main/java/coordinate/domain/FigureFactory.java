@@ -4,15 +4,24 @@ import java.util.List;
 
 public class FigureFactory {
 
-    public Straight makeStraight(final Point from, final Point into) {
-        return Straight.of(from, into);
+    public Figure create(final List<Point> points) {
+        checkPointsNull(points);
+
+        switch (points.size()) {
+            case 2:
+                return Straight.of(points.get(0), points.get(1));
+            case 3:
+                return Triangle.from(points);
+            case 4:
+                return Square.from(points);
+            default:
+                throw new IllegalArgumentException("해당 좌표 목록으로 만들 수 있는 도형은 존재하지 않습니다.");
+        }
     }
 
-    public Square makeSquare(final List<Point> points) {
-        return Square.from(points);
-    }
-
-    public Triangle makeTriangle(final List<Point> points) {
-        return Triangle.from(points);
+    private void checkPointsNull(List<Point> points) {
+        if (points == null) {
+            throw new IllegalArgumentException("유효한 좌표 목록을 입력해주세요.");
+        }
     }
 }

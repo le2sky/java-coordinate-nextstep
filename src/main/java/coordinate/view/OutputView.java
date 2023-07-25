@@ -1,9 +1,7 @@
 package coordinate.view;
 
+import coordinate.domain.Figure;
 import coordinate.domain.Point;
-import coordinate.domain.Square;
-import coordinate.domain.Straight;
-import coordinate.domain.Triangle;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,18 +17,18 @@ public class OutputView {
     private static final String EMPTY_SPACE_SHAPE = "   ";
     private static final int MAX_POINT_RANGE = 24;
 
-    public static void writeStraightLength(final Straight straight) {
+    public static void writeStraightLength(final Figure figure) {
         System.out.println(
-                String.format(WRITE_STRAIGHT_LENGTH_MESSAGE, straight.measure()));
+                String.format(WRITE_STRAIGHT_LENGTH_MESSAGE, figure.measure()));
     }
 
-    public static void writeSquareArea(final Square square) {
-        System.out.println(String.format(WRITE_SQUARE_AREA_MESSAGE, square.measure()));
+    public static void writeSquareArea(final Figure figure) {
+        System.out.println(String.format(WRITE_SQUARE_AREA_MESSAGE, figure.measure()));
     }
 
-    public static void writeTriangleArea(final Triangle triangle) {
+    public static void writeTriangleArea(final Figure figure) {
         System.out.println(
-                String.format(WRITE_TRIANGLE_AREA_MESSAGE, triangle.measure()));
+                String.format(WRITE_TRIANGLE_AREA_MESSAGE, figure.measure()));
     }
 
     public static void writeGraph(final List<Point> points) {
