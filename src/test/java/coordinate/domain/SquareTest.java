@@ -22,7 +22,7 @@ class SquareTest {
 
         Square result = Square.from(points);
 
-        assertThat(result.calculateSquareArea()).isEqualTo(96.0, offset(0.99));
+        assertThat(result.measure()).isEqualTo(96.0, offset(0.99));
     }
 
     @DisplayName("사각형을 만들기 위해서는 4개의 좌표가 필요하다.")

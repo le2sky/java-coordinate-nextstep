@@ -21,7 +21,7 @@ class TriangleTest {
 
         Triangle result = Triangle.from(points);
 
-        assertThat(result.calculateTriangleArea()).isEqualTo(29.0, offset(0.99));
+        assertThat(result.measure()).isEqualTo(29.0, offset(0.99));
     }
 
     @DisplayName("주어진 좌표는 모두 존재하는 좌표여야 한다.")

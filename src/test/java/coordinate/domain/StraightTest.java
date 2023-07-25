@@ -17,7 +17,7 @@ class StraightTest {
 
         Straight result = Straight.of(from, into);
 
-        assertThat(result.calculateLength()).isEqualTo(6.403124, offset(0.00000099));
+        assertThat(result.measure()).isEqualTo(6.403124, offset(0.00000099));
     }
 
     @DisplayName("주어진 좌표는 존재하는 좌표여야 한다.")

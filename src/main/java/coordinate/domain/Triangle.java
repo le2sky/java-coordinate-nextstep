@@ -3,7 +3,7 @@ package coordinate.domain;
 import java.util.List;
 import java.util.Objects;
 
-public class Triangle {
+public class Triangle implements Figure {
 
     private static final int TRIANGLE_VERTEX = 3;
 
@@ -43,7 +43,8 @@ public class Triangle {
         }
     }
 
-    public double calculateTriangleArea() {
+    @Override
+    public double measure() {
         double a = points.get(0).calculateDistanceWith(points.get(1));
         double b = points.get(1).calculateDistanceWith(points.get(2));
         double c = points.get(0).calculateDistanceWith(points.get(2));

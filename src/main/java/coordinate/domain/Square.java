@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class Square {
+public class Square implements Figure {
 
     private static final int SQUARE_VERTEX = 4;
     private static final String SQUARE_SHAPE_EXCEPTION_MESSAGE = "사각형은 사다리꼴, 마름모를 제외한 직사각형만 허용합니다.";
@@ -99,7 +99,8 @@ public class Square {
         }
     }
 
-    public double calculateSquareArea() {
+    @Override
+    public double measure() {
         Point corner = findCorner(points).orElseThrow(InternalError::new);
         double width = calculateWidth(points, corner);
         double height = calculateHeight(points, corner);

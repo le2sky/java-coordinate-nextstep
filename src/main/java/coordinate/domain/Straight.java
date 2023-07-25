@@ -1,6 +1,6 @@
 package coordinate.domain;
 
-public class Straight {
+public class Straight implements Figure {
 
     private final Point from;
     private final Point into;
@@ -22,7 +22,8 @@ public class Straight {
         }
     }
 
-    public double calculateLength() {
+    @Override
+    public double measure() {
         return from.calculateDistanceWith(into);
     }
 }

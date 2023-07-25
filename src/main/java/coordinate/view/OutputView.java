@@ -21,16 +21,16 @@ public class OutputView {
 
     public static void writeStraightLength(final Straight straight) {
         System.out.println(
-                String.format(WRITE_STRAIGHT_LENGTH_MESSAGE, straight.calculateLength()));
+                String.format(WRITE_STRAIGHT_LENGTH_MESSAGE, straight.measure()));
     }
 
     public static void writeSquareArea(final Square square) {
-        System.out.println(String.format(WRITE_SQUARE_AREA_MESSAGE, square.calculateSquareArea()));
+        System.out.println(String.format(WRITE_SQUARE_AREA_MESSAGE, square.measure()));
     }
 
     public static void writeTriangleArea(final Triangle triangle) {
         System.out.println(
-                String.format(WRITE_TRIANGLE_AREA_MESSAGE, triangle.calculateTriangleArea()));
+                String.format(WRITE_TRIANGLE_AREA_MESSAGE, triangle.measure()));
     }
 
     public static void writeGraph(final List<Point> points) {
