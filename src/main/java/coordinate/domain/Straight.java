@@ -5,6 +5,7 @@ import java.util.List;
 class Straight implements Figure {
 
     private static final int STRAIGHT_COORDINATE_LENGTH = 2;
+    private static final String STRAIGHT_MEASUREMENT_FORMAT = "두 점 사이 거리는 %f";
 
     private final Points points;
 
@@ -31,5 +32,10 @@ class Straight implements Figure {
         Point into = pointsList.get(1);
 
         return from.calculateDistanceWith(into);
+    }
+
+    @Override
+    public String getMeasurementResultFormat() {
+        return STRAIGHT_MEASUREMENT_FORMAT;
     }
 }

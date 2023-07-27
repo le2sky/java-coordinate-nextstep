@@ -15,12 +15,6 @@ public class Application {
 
         OutputView.writeGraph(points);
 
-        if (points.size() == 2) {
-            OutputView.writeStraightLength(figureFactory.create(points));
-        } else if (points.size() == 3) {
-            OutputView.writeTriangleArea(figureFactory.create(points));
-        } else if (points.size() == 4) {
-            OutputView.writeSquareArea(figureFactory.create(points));
-        }
+        OutputView.writeMeasurement(figureFactory.create(points));
     }
 }

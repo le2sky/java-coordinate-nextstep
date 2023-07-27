@@ -5,6 +5,7 @@ import java.util.List;
 class Triangle implements Figure {
 
     private static final int TRIANGLE_VERTEX = 3;
+    private static final String TRIANGLE_MEASUREMENT_FORMAT = "삼각형 넓이는 %.1f";
 
     private final Points points;
 
@@ -33,5 +34,10 @@ class Triangle implements Figure {
         double s = (a + b + c) / 2;
 
         return Math.sqrt(((s * s) - (s * a)) * (s - b) * (s - c));
+    }
+
+    @Override
+    public String getMeasurementResultFormat() {
+        return TRIANGLE_MEASUREMENT_FORMAT;
     }
 }

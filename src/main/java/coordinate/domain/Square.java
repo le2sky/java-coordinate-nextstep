@@ -10,6 +10,7 @@ class Square implements Figure {
     private static final int SQUARE_VERTEX = 4;
     private static final String SQUARE_SHAPE_EXCEPTION_MESSAGE = "사각형은 사다리꼴, 마름모를 제외한 직사각형만 허용합니다.";
     private static final int MIN_NEIGHBOR_VERTEX = 2;
+    private static final String SQUARE_MEASUREMENT_FORMAT = "사각형 넓이는 %.0f";
 
     private final Points points;
 
@@ -128,5 +129,10 @@ class Square implements Figure {
 
     private boolean isSameVerticalSide(final Point point, final Point other) {
         return !other.equals(point) && other.getY() == point.getY();
+    }
+
+    @Override
+    public String getMeasurementResultFormat() {
+        return SQUARE_MEASUREMENT_FORMAT;
     }
 }
