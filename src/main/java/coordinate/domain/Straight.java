@@ -1,29 +1,35 @@
 package coordinate.domain;
 
+import java.util.List;
+
 class Straight implements Figure {
 
-    private final Point from;
-    private final Point into;
+    private static final int STRAIGHT_COORDINATE_LENGTH = 2;
 
-    private Straight(final Point from, final Point into) {
-        checkPoints(from, into);
+    private final Points points;
 
-        this.from = from;
-        this.into = into;
+    private Straight(final Points points) {
+        checkPointsLength(points.getPoints());
+
+        this.points = points;
     }
 
-    public static Straight of(final Point from, final Point into) {
-        return new Straight(from, into);
+    public static Straight from(final List<Point> points) {
+        return new Straight(Points.from(points));
     }
 
-    private void checkPoints(final Point from, final Point into) {
-        if (from == null || into == null) {
-            throw new IllegalArgumentException("존재하는 좌표값을 입력해주세요.");
+    private void checkPointsLength(final List<Point> points) {
+        if (points.size() != STRAIGHT_COORDINATE_LENGTH) {
+            throw new IllegalArgumentException("직선을 만들려면 정확히 2개의 좌표가 필요합니다.");
         }
     }
 
     @Override
     public double measure() {
+        List<Point> pointsList = points.getPoints();
+        Point from = pointsList.get(0);
+        Point into = pointsList.get(1);
+
         return from.calculateDistanceWith(into);
     }
 }

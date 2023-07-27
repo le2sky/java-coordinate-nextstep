@@ -9,7 +9,7 @@ public class FigureFactory {
 
         switch (points.size()) {
             case 2:
-                return Straight.of(points.get(0), points.get(1));
+                return Straight.from(points);
             case 3:
                 return Triangle.from(points);
             case 4:
