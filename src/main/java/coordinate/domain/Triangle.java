@@ -1,30 +1,21 @@
 package coordinate.domain;
 
 import java.util.List;
-import java.util.Objects;
 
 class Triangle implements Figure {
 
     private static final int TRIANGLE_VERTEX = 3;
 
-    private final List<Point> points;
+    private final Points points;
 
-    private Triangle(final List<Point> points) {
-        checkPointsNull(points);
-        checkPointsLength(points);
-        checkIncludeNull(points);
+    private Triangle(final Points points) {
+        checkPointsLength(points.getPoints());
 
         this.points = points;
     }
 
     public static Triangle from(final List<Point> points) {
-        return new Triangle(points);
-    }
-
-    private void checkPointsNull(final List<Point> points) {
-        if (points == null) {
-            throw new IllegalArgumentException("유효한 좌표 목록을 입력해주세요.");
-        }
+        return new Triangle(Points.from(points));
     }
 
     private void checkPointsLength(final List<Point> points) {
@@ -33,21 +24,12 @@ class Triangle implements Figure {
         }
     }
 
-    private void checkIncludeNull(final List<Point> points) {
-        boolean isIncluded = points.stream()
-                .filter(Objects::nonNull)
-                .count() != TRIANGLE_VERTEX;
-
-        if (isIncluded) {
-            throw new IllegalArgumentException("존재하는 좌표값을 입력해주세요.");
-        }
-    }
-
     @Override
     public double measure() {
-        double a = points.get(0).calculateDistanceWith(points.get(1));
-        double b = points.get(1).calculateDistanceWith(points.get(2));
-        double c = points.get(0).calculateDistanceWith(points.get(2));
+        List<Point> pointsList = points.getPoints();
+        double a = pointsList.get(0).calculateDistanceWith(pointsList.get(1));
+        double b = pointsList.get(1).calculateDistanceWith(pointsList.get(2));
+        double c = pointsList.get(0).calculateDistanceWith(pointsList.get(2));
         double s = (a + b + c) / 2;
 
         return Math.sqrt(((s * s) - (s * a)) * (s - b) * (s - c));
