@@ -3,7 +3,7 @@ package applyfeedback;
 import java.util.List;
 import java.util.Objects;
 
-class Line {
+class Line implements Figure {
 
     private static final int POINT_SIZE_OF_LINE = 2;
     private static final String INVALID_POINT_MESSAGE = "유효한 좌표를 입력해주세요.";
@@ -46,6 +46,7 @@ class Line {
         }
     }
 
+    @Override
     public double area() {
         return points.get(0).calculateDistanceWith(points.get(1));
     }
