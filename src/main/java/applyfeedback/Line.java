@@ -3,7 +3,12 @@ package applyfeedback;
 import java.util.List;
 import java.util.Objects;
 
-public class Line {
+class Line {
+
+    private static final int POINT_SIZE_OF_LINE = 2;
+    private static final String INVALID_POINT_MESSAGE = "유효한 좌표를 입력해주세요.";
+    private static final String INVALID_POINT_SIZE_MESSAGE =
+            "직선의 좌표는 " + POINT_SIZE_OF_LINE + "개 입니다.";
 
     private final List<Point> points;
 
@@ -21,13 +26,13 @@ public class Line {
 
     private static void checkPointsNull(final List<Point> points) {
         if (points == null) {
-            throw new IllegalArgumentException("유효한 좌표를 입력해주세요.");
+            throw new IllegalArgumentException(INVALID_POINT_MESSAGE);
         }
     }
 
     private static void checkHasNull(final List<Point> points) {
         if (hasNull(points)) {
-            throw new IllegalArgumentException("유효한 좌표를 입력해주세요.");
+            throw new IllegalArgumentException(INVALID_POINT_MESSAGE);
         }
     }
 
@@ -36,8 +41,8 @@ public class Line {
     }
 
     private static void checkPointsSize(final List<Point> points) {
-        if (points.size() != 2) {
-            throw new IllegalArgumentException("직선의 좌표는 2개 입니다.");
+        if (points.size() != POINT_SIZE_OF_LINE) {
+            throw new IllegalArgumentException(INVALID_POINT_SIZE_MESSAGE);
         }
     }
 
