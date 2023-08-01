@@ -44,6 +44,14 @@ class Point {
         return Math.sqrt(a + b);
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

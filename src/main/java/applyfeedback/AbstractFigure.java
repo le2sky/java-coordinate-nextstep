@@ -34,7 +34,6 @@ abstract class AbstractFigure implements Figure {
     }
 
     private static void checkHasDuplicatedPoint(final List<Point> points) {
-        System.out.println(points.stream().distinct().count());
         if (points.stream().distinct().count() != points.size()) {
             throw new IllegalArgumentException(INVALID_POINT_MESSAGE);
         }
