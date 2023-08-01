@@ -20,6 +20,7 @@ class Line implements Figure {
         checkPointsNull(points);
         checkHasNull(points);
         checkPointsSize(points);
+        checkHasDuplicatedPoint(points);
 
         return new Line(points);
     }
@@ -43,6 +44,12 @@ class Line implements Figure {
     private static void checkPointsSize(final List<Point> points) {
         if (points.size() != POINT_SIZE_OF_LINE) {
             throw new IllegalArgumentException(INVALID_POINT_SIZE_MESSAGE);
+        }
+    }
+
+    private static void checkHasDuplicatedPoint(final List<Point> points) {
+        if (points.stream().distinct().count() != points.size()) {
+            throw new IllegalArgumentException(INVALID_POINT_MESSAGE);
         }
     }
 
