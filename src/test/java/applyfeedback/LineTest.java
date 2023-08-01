@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 class LineTest {
 
-    @DisplayName("직선의 좌표는 두개이다. 두개가 아닌 경우, 예외를 발생함")
+    @DisplayName("직선의 좌표는 두개이다.")
     @Test
     void checkPointsSizeOfLine() {
         List<Point> points = new ArrayList<>();

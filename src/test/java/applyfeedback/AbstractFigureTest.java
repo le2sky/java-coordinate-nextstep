@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 class AbstractFigureTest {
 
-    @DisplayName("좌표가 널값인 경우 예외를 발생함")
+    @DisplayName("좌표가 널값인 경우는 허용되지 않는다.")
     @Test
     void checkPointsNull() {
         assertThatThrownBy(() -> Line.from(null))
@@ -17,7 +17,7 @@ class AbstractFigureTest {
                 .hasMessage("유효한 좌표를 입력해주세요.");
     }
 
-    @DisplayName("좌표 목록에 널이 포함되어 있는 경우, 예외를 발생함")
+    @DisplayName("좌표 목록에 널이 포함되는 것은 허용되지 않는다.")
     @Test
     void hasNull() {
         List<Point> points = new ArrayList<>();
@@ -29,7 +29,7 @@ class AbstractFigureTest {
                 .hasMessage("유효한 좌표를 입력해주세요.");
     }
 
-    @DisplayName("좌표 목록에 중복 좌표가 포함되어 있는 경우, 예외를 발생함")
+    @DisplayName("좌표 목록에 중복 좌표가 포함되어 있는 경우는 허용되지 않는다.")
     @Test
     void hasDuplicatedPoint() {
         List<Point> points = new ArrayList<>();

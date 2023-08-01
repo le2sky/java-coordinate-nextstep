@@ -9,15 +9,6 @@ import org.junit.jupiter.api.Test;
 
 class PointTest {
 
-    @DisplayName("Point 생성 테스트")
-    @Test
-    void point() {
-        Point point = Point.of(1, 2);
-        Point otherPoint = Point.of(1, 2);
-
-        assertThat(point).isEqualTo(otherPoint);
-    }
-
     @DisplayName("X, Y좌표 모두 최대 24까지만 입력할 수 있다.")
     @Test
     void checkXYMaxSize() {

@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 class RectangleTest {
 
-    @DisplayName("사각형을 만들기 위해서는 4개의 좌표가 필요하다.")
+    @DisplayName("사각형의 좌표는 4개다.")
     @Test
     void checkPointsForMakeSquare() {
         List<Point> points = new ArrayList<>();
@@ -30,7 +30,7 @@ class RectangleTest {
                 .hasMessage("사각형의 좌표는 4개 입니다.");
     }
 
-    @DisplayName("찌그러진 사각형은 허용하지 않는다.")
+    @DisplayName("찌그러진 사각형은 허용되지 않는다.")
     @Test
     void checkSquare() {
         List<Point> points = new ArrayList<>();
