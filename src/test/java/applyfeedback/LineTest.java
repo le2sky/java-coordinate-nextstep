@@ -54,8 +54,8 @@ class LineTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("직선의 좌표는 2개 입니다.");
 
-        points.add(Point.of(1, 4));
-        points.add(Point.of(1, 4));
+        points.add(Point.of(1, 8));
+        points.add(Point.of(1, 6));
 
         assertThatThrownBy(() -> Line.from(points))
                 .isInstanceOf(IllegalArgumentException.class)
