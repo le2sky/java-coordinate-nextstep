@@ -21,6 +21,12 @@ class Triangle extends AbstractFigure {
         return triangle;
     }
 
+    private static void checkPointsSize(final List<Point> points) {
+        if (points.size() != POINT_SIZE_OF_TRIANGLE) {
+            throw new IllegalArgumentException(INVALID_POINT_SIZE_MESSAGE);
+        }
+    }
+
     private static void checkTriangleShape(final List<Point> points) {
         if (hasParallelLines(points)) {
             throw new IllegalArgumentException("삼각형을 이루는 유효한 좌표값을 입력해주세요.");
@@ -37,12 +43,6 @@ class Triangle extends AbstractFigure {
                 .map(function)
                 .distinct()
                 .count() == 1;
-    }
-
-    private static void checkPointsSize(final List<Point> points) {
-        if (points.size() != POINT_SIZE_OF_TRIANGLE) {
-            throw new IllegalArgumentException(INVALID_POINT_SIZE_MESSAGE);
-        }
     }
 
     @Override
