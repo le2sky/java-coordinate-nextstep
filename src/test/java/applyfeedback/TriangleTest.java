@@ -41,4 +41,30 @@ class TriangleTest {
 
         assertThat(result).isEqualTo(29.0, offset(0.99));
     }
+
+    @DisplayName("x 좌표값이 모두 동일하면 올바른 삼각형 모양이 아니다.")
+    @Test
+    void checkTrianglePointX() {
+        List<Point> points = new ArrayList<>();
+        points.add(Point.of(10, 10));
+        points.add(Point.of(10, 15));
+        points.add(Point.of(10, 8));
+
+        assertThatThrownBy(() -> Triangle.from(points))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("삼각형을 이루는 유효한 좌표값을 입력해주세요.");
+    }
+
+    @DisplayName("y 좌표값이 모두 동일하면 올바른 삼각형 모양이 아니다.")
+    @Test
+    void checkTrianglePointY() {
+        List<Point> points = new ArrayList<>();
+        points.add(Point.of(10, 10));
+        points.add(Point.of(15, 10));
+        points.add(Point.of(8, 10));
+
+        assertThatThrownBy(() -> Triangle.from(points))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("삼각형을 이루는 유효한 좌표값을 입력해주세요.");
+    }
 }

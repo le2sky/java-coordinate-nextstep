@@ -1,6 +1,7 @@
 package applyfeedback;
 
 import java.util.List;
+import java.util.function.Function;
 
 class Triangle extends AbstractFigure {
 
@@ -15,8 +16,27 @@ class Triangle extends AbstractFigure {
     public static Triangle from(final List<Point> points) {
         Triangle triangle = new Triangle(points);
         checkPointsSize(points);
+        checkTriangleShape(points);
 
         return triangle;
+    }
+
+    private static void checkTriangleShape(final List<Point> points) {
+        if (hasParallelLines(points)) {
+            throw new IllegalArgumentException("삼각형을 이루는 유효한 좌표값을 입력해주세요.");
+        }
+    }
+
+    private static boolean hasParallelLines(final List<Point> points) {
+        return isParallelLine(points, Point::getX) || isParallelLine(points, Point::getY);
+    }
+
+    private static boolean isParallelLine(final List<Point> points,
+            final Function<Point, Integer> function) {
+        return points.stream()
+                .map(function)
+                .distinct()
+                .count() == 1;
     }
 
     private static void checkPointsSize(final List<Point> points) {
