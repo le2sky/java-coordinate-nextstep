@@ -8,6 +8,7 @@ class Triangle extends AbstractFigure {
     private static final int POINT_SIZE_OF_TRIANGLE = 3;
     private static final String INVALID_POINT_SIZE_MESSAGE =
             "삼각형의 좌표는 " + POINT_SIZE_OF_TRIANGLE + "개 입니다.";
+    private static final String INVALID_TRIANGLE_SHAPE_MESSAGE = "삼각형을 이루는 유효한 좌표값을 입력해주세요.";
 
     private Triangle(final List<Point> points) {
         super(points);
@@ -29,7 +30,7 @@ class Triangle extends AbstractFigure {
 
     private static void checkTriangleShape(final List<Point> points) {
         if (hasParallelLines(points)) {
-            throw new IllegalArgumentException("삼각형을 이루는 유효한 좌표값을 입력해주세요.");
+            throw new IllegalArgumentException(INVALID_TRIANGLE_SHAPE_MESSAGE);
         }
     }
 
