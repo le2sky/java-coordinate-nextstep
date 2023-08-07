@@ -29,16 +29,16 @@ class Triangle extends AbstractFigure {
     }
 
     private static void checkTriangleShape(final List<Point> points) {
-        if (hasParallelLines(points)) {
+        if (hasStraightLines(points)) {
             throw new IllegalArgumentException(INVALID_TRIANGLE_SHAPE_MESSAGE);
         }
     }
 
-    private static boolean hasParallelLines(final List<Point> points) {
-        return isParallelLine(points, Point::getX) || isParallelLine(points, Point::getY);
+    private static boolean hasStraightLines(final List<Point> points) {
+        return isStraightLine(points, Point::getX) || isStraightLine(points, Point::getY);
     }
 
-    private static boolean isParallelLine(final List<Point> points,
+    private static boolean isStraightLine(final List<Point> points,
             final Function<Point, Integer> function) {
         return points.stream()
                 .map(function)
